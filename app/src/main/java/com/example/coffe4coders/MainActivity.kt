@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ProductCard()
+            Greeting(name = "Jhony")
         }
     }
 }
@@ -31,6 +31,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     Coffe4CodersTheme {
-        ProductCard()
+        Greeting(name = "Jhony")
     }
 }
