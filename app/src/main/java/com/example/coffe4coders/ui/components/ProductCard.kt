@@ -1,5 +1,7 @@
 package com.example.coffe4coders.ui.components
 
+import android.icu.number.Scale
+import android.widget.ImageView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -11,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,11 +23,16 @@ import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
 import com.example.coffe4coders.ui.theme.PlatziBlue
 import com.example.coffe4coders.ui.theme.PlatziGreen
 
-enum class CountryIso(val backgroundImage: Int, val flagImage: Int, val surfaceColor: Color) {
-    COL(R.drawable.co, R.drawable.flagco, PlatziBlue),
-    BRA(R.drawable.br, R.drawable.flagbr, PlatziBlue),
-    CRI(R.drawable.ri, R.drawable.flagri, PlatziGreen),
-    NIC(R.drawable.ni, R.drawable.flagni, PlatziGreen)
+enum class CountryIso(
+    val iso: String,
+    val backgroundImage: Int,
+    val flagImage: Int,
+    val surfaceColor: Color
+) {
+    COL("COL", R.drawable.co, R.drawable.flagco, PlatziBlue),
+    BRA("BRA",R.drawable.br, R.drawable.flagbr, PlatziBlue),
+    CRI("CRI",R.drawable.ri, R.drawable.flagri, PlatziGreen),
+    NIC("NIC",R.drawable.ni, R.drawable.flagni, PlatziGreen)
 }
 
 @Composable
@@ -43,13 +51,14 @@ fun ProductCard(
             .clickable {
                 selected()
             }
-            .size(480.dp),
+            .size(480.dp, 320.dp),
         elevation = 8.dp,
         shape = MaterialTheme.shapes.small
     ) {
         Image(
             painter = painterResource(id = country.backgroundImage),
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop
         )
         Surface(
             modifier = Modifier.fillMaxWidth(),
@@ -96,6 +105,6 @@ fun ProductCardPreview() {
             35.0,
             "USD",
             CountryIso.COL
-        ){}
+        ) {}
     }
 }

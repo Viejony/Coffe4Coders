@@ -42,7 +42,7 @@ fun FeedScreen(navController: NavController) {
                         currency = "USD",
                         country = country
                     ){
-                        navController.navigate("detail"){
+                        navController.navigate("detail/${country.iso}"){
                             launchSingleTop = true
                         }
                     }

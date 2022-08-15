@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.coffe4coders.ui.components.CountryIso
 import com.example.coffe4coders.ui.screens.DetailsScreen
 import com.example.coffe4coders.ui.screens.FeedScreen
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
@@ -32,8 +33,10 @@ fun NavigationHost(){
                 composable(route = "feed"){
                     FeedScreen(navController)
                 }
-                composable(route = "detail"){
-                    DetailsScreen(navController)
+                composable(route = "detail/{countryIso}"){ backStackEntry ->
+                    val countryIsoString = backStackEntry.arguments?.getString("countryIso") ?: "COL"
+                    val countryIso = CountryIso.valueOf(countryIsoString)
+                    DetailsScreen(navController, countryIso)
                 }
             }
         }
