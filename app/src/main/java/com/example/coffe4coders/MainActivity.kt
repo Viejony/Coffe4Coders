@@ -10,15 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.coffe4coders.ui.components.ProductCard
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Coffe4CodersTheme {
-                Text("Working")
-            }
+            ProductCard()
         }
     }
 }
@@ -32,6 +31,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     Coffe4CodersTheme {
-        Greeting("Android")
+        ProductCard()
     }
 }
