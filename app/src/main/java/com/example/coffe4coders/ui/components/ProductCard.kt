@@ -20,38 +20,12 @@ import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
 import com.example.coffe4coders.ui.theme.PlatziBlue
 import com.example.coffe4coders.ui.theme.PlatziGreen
 
-enum class CountryIso(val iso: String) {
-    COL("COL"),
-    BRA("BRA"),
-    CRI("CRI"),
-    NIC("NIC");
-
-    fun getBackgroundImage(): Int {
-        return when (this) {
-            COL -> R.drawable.co
-            BRA -> R.drawable.br
-            CRI -> R.drawable.ri
-            NIC -> R.drawable.ni
-        }
-    }
-
-    fun getCountryImage(): Int {
-        return when (this) {
-            COL -> R.drawable.flagco
-            BRA -> R.drawable.flagbr
-            CRI -> R.drawable.flagri
-            NIC -> R.drawable.flagni
-        }
-    }
-
-    fun getSurfaceColor(): Color {
-        return when (this) {
-            COL, NIC -> PlatziBlue
-            BRA, CRI -> PlatziGreen
-        }
-    }
+enum class CountryIso(val backgroundImage: Int, val flagImage: Int, val surfaceColor: Color) {
+    COL(R.drawable.co, R.drawable.flagco, PlatziBlue),
+    BRA(R.drawable.br, R.drawable.flagbr, PlatziBlue),
+    CRI(R.drawable.ri, R.drawable.flagri, PlatziGreen),
+    NIC(R.drawable.ni, R.drawable.flagni, PlatziGreen)
 }
-
 
 @Composable
 fun ProductCard(
@@ -71,12 +45,12 @@ fun ProductCard(
         shape = MaterialTheme.shapes.small
     ) {
         Image(
-            painter = painterResource(id = country.getBackgroundImage()),
+            painter = painterResource(id = country.backgroundImage),
             contentDescription = null
         )
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = country.getSurfaceColor().copy(alpha = 0.2f)
+            color = country.surfaceColor.copy(alpha = 0.2f)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -90,7 +64,7 @@ fun ProductCard(
                 ) {
                     Row() {
                         Image(
-                            painter = painterResource(id = country.getCountryImage()),
+                            painter = painterResource(id = country.flagImage),
                             contentDescription = null,
                             modifier = Modifier.size(32.dp)
                         )
