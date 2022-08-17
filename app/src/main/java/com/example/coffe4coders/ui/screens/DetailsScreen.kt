@@ -69,7 +69,7 @@ fun DetailsScreen(navController: NavController, countryIso: CountryIso) {
                             modifier = Modifier.fillMaxHeight()
                         )
                         CustomButton(label = "Continuar") {
-                            navController.navigate("checkout"){
+                            navController.navigate("checkout/${countryIso.iso}"){
                                 launchSingleTop = true
                             }
                         }
