@@ -18,6 +18,17 @@ fun CheckoutScreen(){
 )
 @Composable
 fun CheckoutScreenPreview(){
+    val cities = listOf(
+        "Mexico City, Mexico",
+        "The Habana, Cuba",
+        "Cancun, Mexico",
+        "Medellin, Colombia",
+        "Buenos Aires, Argentina",
+        "Sao Paulo, Brasil",
+        "Lima, Peru",
+        "Montevideo, Uruguay",
+        "Panama City, Panama"
+    )
     Coffe4CodersTheme {
         CheckoutScreen()
     }
