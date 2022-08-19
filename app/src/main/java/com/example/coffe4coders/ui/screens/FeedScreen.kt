@@ -18,15 +18,11 @@ import com.example.coffe4coders.ui.components.CountryIso
 import com.example.coffe4coders.ui.components.CustomAppBar
 import com.example.coffe4coders.ui.components.ProductCard
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.example.coffe4coders.utils.MockDataProvider
 
 @Composable
 fun FeedScreen(navController: NavController) {
-    val list: List<CountryIso> = listOf(
-        CountryIso.COL,
-        CountryIso.CRI,
-        CountryIso.NIC,
-        CountryIso.BRA
-    )
+    val list = MockDataProvider.getListOfProducts()
     Scaffold(
         topBar = {
             CustomAppBar(title = "Coffe4Codders", navigationIcon = null, navigationAction = null)
@@ -40,15 +36,11 @@ fun FeedScreen(navController: NavController) {
                             BodyText(body = "Este es un texto de prueba")
                         }
                     }
-                    items(list) { country ->
+                    items(list) { product ->
                         ProductCard(
-                            name = "Cafe premium",
-                            summary = "Cafe de alta calidad",
-                            price = 18.0,
-                            currency = "USD",
-                            country = country
+                            product = product
                         ) {
-                            navController.navigate("detail/${country.iso}") {
+                            navController.navigate("detail/${product.id}") {
                                 launchSingleTop = true
                             }
                         }

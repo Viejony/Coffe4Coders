@@ -16,6 +16,7 @@ import com.example.coffe4coders.ui.screens.CheckoutScreen
 import com.example.coffe4coders.ui.screens.DetailsScreen
 import com.example.coffe4coders.ui.screens.FeedScreen
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.example.coffe4coders.utils.MockDataProvider
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,17 +37,17 @@ fun NavigationHost() {
                     composable(route = "feed") {
                         FeedScreen(navController)
                     }
-                    composable(route = "detail/{countryIso}") { backStackEntry ->
-                        val countryIsoString =
-                            backStackEntry.arguments?.getString("countryIso") ?: "COL"
-                        val countryIso = CountryIso.valueOf(countryIsoString)
-                        DetailsScreen(navController, countryIso)
+                    composable(route = "detail/{productID}") { backStackEntry ->
+                        val productIDString = backStackEntry.arguments?.getString("productID") ?: "COL"
+                        val productID = productIDString.toInt()
+                        val product = MockDataProvider.getProductByID(productID)
+                        DetailsScreen(navController, product!!)
                     }
-                    composable(route = "checkout/{countryIso}") { backStackEntry ->
-                        val countryIsoString =
-                            backStackEntry.arguments?.getString("countryIso") ?: "COL"
-                        val countryIso = CountryIso.valueOf(countryIsoString)
-                        CheckoutScreen(navController, countryIso)
+                    composable(route = "checkout/{productID}") { backStackEntry ->
+                        val productIDString = backStackEntry.arguments?.getString("productID") ?: "COL"
+                        val productID = productIDString.toInt()
+                        val product = MockDataProvider.getProductByID(productID)
+                        CheckoutScreen(navController, product!!)
                     }
                 }
             }

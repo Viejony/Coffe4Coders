@@ -15,12 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.coffe4coders.models.Product
 import com.example.coffe4coders.ui.components.*
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
 import com.example.coffe4coders.utils.MockDataProvider
 
 @Composable
-fun CheckoutScreen(navController: NavController, countryIso: CountryIso) {
+fun CheckoutScreen(navController: NavController, product: Product) {
+
     val cities = MockDataProvider.getListOfCities()
     var city by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
@@ -31,17 +33,13 @@ fun CheckoutScreen(navController: NavController, countryIso: CountryIso) {
     Scaffold(
         topBar = {
             CustomAppBar(title = null, navigationIcon = Icons.Filled.ArrowBack) {
-                navController.navigate("detail/${countryIso.iso}")
+                navController.navigate("detail/${product.id}")
             }
         },
         content = {
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 ProductCard(
-                    name = "Café de Colombia",
-                    summary = "Café de las montañas",
-                    price = 35.0,
-                    currency = "USD",
-                    country = countryIso
+                    product = product!!
                 ) {}
 
                 Column(modifier = Modifier.padding(16.dp)) {
@@ -84,7 +82,7 @@ fun CheckoutScreen(navController: NavController, countryIso: CountryIso) {
                         textAlign = TextAlign.Start
                     )
                     CustomButton(label = "Finalizar pedido") {
-                        
+
                     }
                 }
             }
@@ -97,7 +95,14 @@ fun CheckoutScreen(navController: NavController, countryIso: CountryIso) {
 @Composable
 fun CheckoutScreenPreview() {
     val navController = rememberNavController()
+    val productID = 0
+    val product = MockDataProvider.getProductByID(0)
     Coffe4CodersTheme {
-        CheckoutScreen(navController, CountryIso.COL)
+        if (product != null) {
+            CheckoutScreen(navController, product = product)
+        }
+        else{
+            NotFoundProduct(id = productID)
+        }
     }
 }

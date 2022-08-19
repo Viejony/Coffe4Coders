@@ -1,7 +1,5 @@
 package com.example.coffe4coders.ui.components
 
-import android.icu.number.Scale
-import android.widget.ImageView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,9 +17,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coffe4coders.R
+import com.example.coffe4coders.models.Product
+import com.example.coffe4coders.ui.screens.NotFoundProduct
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
 import com.example.coffe4coders.ui.theme.PlatziBlue
 import com.example.coffe4coders.ui.theme.PlatziGreen
+import com.example.coffe4coders.utils.MockDataProvider
 
 enum class CountryIso(
     val iso: String,
@@ -37,13 +38,10 @@ enum class CountryIso(
 
 @Composable
 fun ProductCard(
-    name: String,
-    summary: String,
-    price: Double,
-    currency: String,
-    country: CountryIso,
+    product: Product,
     selected: () -> Unit
 ) {
+    val country = CountryIso.valueOf(product.countryISO) ?: CountryIso.COL
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -68,8 +66,8 @@ fun ProductCard(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(16.dp)
             ) {
-                Text("$name", style = MaterialTheme.typography.h4)
-                Text("$summary", style = MaterialTheme.typography.body1)
+                Text("${product.name}", style = MaterialTheme.typography.h4)
+                Text("${product.summary}", style = MaterialTheme.typography.body1)
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom
@@ -81,7 +79,7 @@ fun ProductCard(
                             modifier = Modifier.size(32.dp)
                         )
                         Text(
-                            "$$price $currency",
+                            "$${product.price} ${product.currency}",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.End,
                             style = MaterialTheme.typography.h4
@@ -98,13 +96,14 @@ fun ProductCard(
 )
 @Composable
 fun ProductCardPreview() {
+    val productID = 0
+    val product = MockDataProvider.getProductByID(productID)
     Coffe4CodersTheme() {
-        ProductCard(
-            "Cafe de Colombia",
-            "Cafe de la montaña",
-            35.0,
-            "USD",
-            CountryIso.COL
-        ) {}
+        if(product != null){
+            ProductCard(product!!) {}
+        }
+        else{
+            NotFoundProduct(id = productID)
+        }
     }
 }

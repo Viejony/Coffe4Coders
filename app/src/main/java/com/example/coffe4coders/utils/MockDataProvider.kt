@@ -63,7 +63,7 @@ class MockDataProvider {
 
         fun getProductByID(id: Int): Product?{
             val list = MockDataProvider.getListOfProducts()
-            return list.filter { it.id == id }[0]
+            return list.find { it.id == id }
         }
 
     }
