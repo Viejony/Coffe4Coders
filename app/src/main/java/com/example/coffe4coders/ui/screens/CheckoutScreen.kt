@@ -29,14 +29,21 @@ fun CheckoutScreen(navController: NavController, product: Product) {
     var email by remember { mutableStateOf("") }
     var phone by remember { mutableStateOf("") }
     var address by remember { mutableStateOf("") }
+    var message by remember { mutableStateOf<String?>(null) }
 
     Scaffold(
         topBar = {
-            CustomAppBar(title = null, navigationIcon = Icons.Filled.ArrowBack) {
+            CustomAppBar(title = "Comprar", navigationIcon = Icons.Filled.ArrowBack) {
                 navController.navigate("detail/${product.id}")
             }
         },
         content = {
+            Alert("Felicidades", message){
+                navController.navigate("feed"){
+                    launchSingleTop = true
+                    popUpTo("feed")
+                }
+            }
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 ProductCard(
                     product = product!!
@@ -82,7 +89,8 @@ fun CheckoutScreen(navController: NavController, product: Product) {
                         textAlign = TextAlign.Start
                     )
                     CustomButton(label = "Finalizar pedido") {
-
+                        // TODO: validate all data
+                        message = "Tu pedido ha sido creado"
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package com.example.coffe4coders.ui.screens
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -24,7 +25,6 @@ import com.example.coffe4coders.ui.components.CountryIso
 import com.example.coffe4coders.ui.components.CustomAppBar
 import com.example.coffe4coders.ui.components.CustomButton
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
-import com.example.coffe4coders.utils.LOREM
 import com.example.coffe4coders.utils.MockDataProvider
 
 @Composable
@@ -32,7 +32,7 @@ fun DetailsScreen(navController: NavController, product: Product) {
     val countryIso = CountryIso.valueOf(product.countryISO)
     Scaffold(
         topBar = {
-            CustomAppBar(title = "", navigationIcon = Icons.Filled.ArrowBack) {
+            CustomAppBar(title = product.name, navigationIcon = Icons.Filled.ArrowBack) {
                 navController.navigate("feed") {
                     popUpTo("feed")
                 }
@@ -91,6 +91,26 @@ fun DetailsScreen(navController: NavController, product: Product) {
 @Composable
 fun DetailsScreenPreview() {
     Coffe4CodersTheme() {
+        val navController = rememberNavController()
+        val productID = 0
+        val product = MockDataProvider.getProductByID(productID)
+
+        if (product != null) {
+            DetailsScreen(navController, product = product)
+        }
+        else{
+            NotFoundProduct(id = productID)
+        }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
+@Composable
+fun DetailsScreenDarkPreview() {
+    Coffe4CodersTheme {
         val navController = rememberNavController()
         val productID = 0
         val product = MockDataProvider.getProductByID(productID)
