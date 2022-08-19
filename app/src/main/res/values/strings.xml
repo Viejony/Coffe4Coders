@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Coffe4Coders</string>
+
+    <string name="finish_order">Finish order</string>
+    <string name="complete_name">Complete name</string>
+    <string name="email">Email</string>
+    <string name="residence_address">Residence address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="city">City</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="buy">Buy</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="error_not_complete_fields_msg">Check that all the required fields were filled</string>
+    <string name="error_not_complete_fields_title">Error</string>
+    <string name="finished_order_msg">Your order was created</string>
 </resources>

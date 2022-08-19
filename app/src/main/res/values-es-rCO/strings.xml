@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Coffe4Coders</string>
+
+    <string name="finish_order">Finalizar pedido</string>
+    <string name="complete_name">Nombre completo</string>
+    <string name="email">Correo electrónico</string>
+    <string name="residence_address">Dirección de residencia</string>
+    <string name="phone_number">Número telefónico</string>
+    <string name="city">Ciudad</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="buy">Comprar</string>
+    <string name="congratulations">Felicidades</string>
+    <string name="error_not_complete_fields_msg">Verifica que todos los campos solcitados han sido rellenados</string>
+    <string name="error_not_complete_fields_title">Error</string>
+    <string name="finished_order_msg">Tu pedido ha sido creado</string>
+
+
+</resources>
