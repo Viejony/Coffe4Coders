@@ -17,20 +17,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coffe4coders.ui.components.*
 import com.example.coffe4coders.ui.theme.Coffe4CodersTheme
+import com.example.coffe4coders.utils.MockDataProvider
 
 @Composable
 fun CheckoutScreen(navController: NavController, countryIso: CountryIso) {
-    val cities = listOf(
-        "Mexico City, Mexico",
-        "The Habana, Cuba",
-        "Cancun, Mexico",
-        "Medellin, Colombia",
-        "Buenos Aires, Argentina",
-        "Sao Paulo, Brasil",
-        "Lima, Peru",
-        "Montevideo, Uruguay",
-        "Panama City, Panama"
-    )
+    val cities = MockDataProvider.getListOfCities()
     var city by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
