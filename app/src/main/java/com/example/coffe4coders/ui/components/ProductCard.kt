@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,9 +32,9 @@ enum class CountryIso(
     val surfaceColor: Color
 ) {
     COL("COL", R.drawable.co, R.drawable.flagco, PlatziBlue),
-    BRA("BRA",R.drawable.br, R.drawable.flagbr, PlatziBlue),
-    CRI("CRI",R.drawable.ri, R.drawable.flagri, PlatziGreen),
-    NIC("NIC",R.drawable.ni, R.drawable.flagni, PlatziGreen)
+    BRA("BRA", R.drawable.br, R.drawable.flagbr, PlatziBlue),
+    CRI("CRI", R.drawable.ri, R.drawable.flagri, PlatziGreen),
+    NIC("NIC", R.drawable.ni, R.drawable.flagni, PlatziGreen)
 }
 
 @Composable
@@ -67,7 +68,11 @@ fun ProductCard(
                 modifier = Modifier.padding(16.dp)
             ) {
                 Text("${product.name}", style = MaterialTheme.typography.h4)
-                Text("${product.summary}", style = MaterialTheme.typography.body1)
+                Text(
+                    "${product.summary}",
+                    style = MaterialTheme.typography.body1,
+                    textAlign = TextAlign.Justify
+                )
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom
@@ -96,13 +101,15 @@ fun ProductCard(
 )
 @Composable
 fun ProductCardPreview() {
+    val context = LocalContext.current
     val productID = 0
-    val product = MockDataProvider.getProductByID(productID)
+    val product = MockDataProvider.getProductByID(context, productID)
+
     Coffe4CodersTheme() {
-        if(product != null){
+        if (product != null) {
             ProductCard(product!!) {}
         }
-        else{
+        else {
             NotFoundProduct(id = productID)
         }
     }

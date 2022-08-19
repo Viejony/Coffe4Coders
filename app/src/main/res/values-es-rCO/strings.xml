@@ -15,5 +15,34 @@
     <string name="error_not_complete_fields_title">Error</string>
     <string name="finished_order_msg">Tu pedido ha sido creado</string>
 
+    <string name="welcome">Bienvenido</string>
+    <string name="welcome_msg">Aqui puedes encontrar nuestro catálogo de productos de café a la venta</string>
+
+    <string name="continue_title">Continuar</string>
+
+    <string name="co_coffee_name">Café de Colombia</string>
+    <string name="br_coffee_name">Café de Brasil</string>
+    <string name="ri_coffee_name">Café de Costa Rica</string>
+    <string name="ni_coffee_name">Café de Nicaragua</string>
+
+    <string name="co_coffee_summary">Café de las montañas de Colombia.</string>
+    <string name="br_coffee_summary">El café brasileño, que proviene del país cafetero más grande del mundo.</string>
+    <string name="ri_coffee_summary">El 100% de nuestro café es de la especie Arábica, de las variedades Caturra y Catuaí.</string>
+    <string name="ni_coffee_summary">Los mejores cafés provienen de Nueva Segovia, Madriz.</string>
+
+    <string name="co_coffee_desc">Nuestro esfuerzo y trabajo conjunto representa el sueño de amor por las montañas de nuestro pais.</string>
+    <string name="br_coffee_desc">El café de Brasil corresponde a la variedad arábica y robusta, por ello predomina el sabor dulzón, similar a los cafés procedentes de África.</string>
+    <string name="ri_coffee_desc">El café de Costa Rica es toda una cultura con una tradición construida por siglos de minuciosa dedicación a los detalles.</string>
+    <string name="ni_coffee_desc">El 95% del café producido en Nicaragua es cultivado en sombra, lo que garantiza una calidad suprema.</string>
+
+    <string name="city_mexico">Ciudad de México, México</string>
+    <string name="city_habana">La Habana, Cuba</string>
+    <string name="city_cancun">Cancun, México</string>
+    <string name="city_medellin">Medellín Colombia</string>
+    <string name="city_buenosaires">Buenos Aires, Argentina</string>
+    <string name="city_saopaulo">Sao Paulo, Brasil</string>
+    <string name="city_lima">Lima, Peru</string>
+    <string name="city_montevideo">Montevideo, Uruguay</string>
+    <string name="city_panama">Ciudad de Panamá, Panamá</string>
 
 </resources>

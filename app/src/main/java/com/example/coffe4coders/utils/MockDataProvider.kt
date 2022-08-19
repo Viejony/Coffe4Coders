@@ -1,68 +1,70 @@
 package com.example.coffe4coders.utils
 
+import android.content.Context
+import com.example.coffe4coders.R
 import com.example.coffe4coders.models.Product
 
 class MockDataProvider {
 
     companion object{
 
-        fun getListOfProducts(): List<Product>{
+        fun getListOfProducts(context: Context): List<Product>{
             return listOf(
                 Product(
-                    0,
-                    "Café de Colombia",
-                    PRODUCT_DESCRIPTION,
-                    LOREM_FACT,
-                    55.0,
-                    "USD",
-                    "COL"
+                    id = 0,
+                    name = context.getString(R.string.co_coffee_name),
+                    summary = context.getString(R.string.co_coffee_summary),
+                    description = context.getString(R.string.co_coffee_desc),
+                    price = 55.0,
+                    currency = "USD",
+                    countryISO = "COL"
                 ),
                 Product(
-                    1,
-                    "Café de Brasil",
-                    PRODUCT_DESCRIPTION,
-                    LOREM_FACT,
-                    40.0,
-                    "USD",
-                    "BRA"
+                    id = 1,
+                    name = context.getString(R.string.br_coffee_name),
+                    summary = context.getString(R.string.br_coffee_summary),
+                    description = context.getString(R.string.br_coffee_desc),
+                    price = 40.0,
+                    currency = "USD",
+                    countryISO = "BRA"
                 ),
                 Product(
-                    2,
-                    "Café de Costa Ríca",
-                    PRODUCT_DESCRIPTION,
-                    LOREM_FACT,
-                    35.0,
-                    "USD",
-                    "CRI"
+                    id = 2,
+                    name = context.getString(R.string.ri_coffee_name),
+                    summary = context.getString(R.string.ri_coffee_summary),
+                    description = context.getString(R.string.ri_coffee_desc),
+                    price = 35.0,
+                    currency = "USD",
+                    countryISO = "CRI"
                 ),
                 Product(
-                    3,
-                    "Café de Nicaragua",
-                    PRODUCT_DESCRIPTION,
-                    LOREM_FACT,
-                    50.0,
-                    "USD",
-                    "NIC"
+                    id = 3,
+                    name = context.getString(R.string.ni_coffee_name),
+                    summary = context.getString(R.string.ni_coffee_summary),
+                    description = context.getString(R.string.ni_coffee_desc),
+                    price = 50.0,
+                    currency = "USD",
+                    countryISO = "NIC"
                 )
             )
         }
 
-        fun getListOfCities(): List<String>{
+        fun getListOfCities(context: Context): List<String>{
             return listOf(
-                "Mexico City, Mexico",
-                "The Habana, Cuba",
-                "Cancun, Mexico",
-                "Medellin, Colombia",
-                "Buenos Aires, Argentina",
-                "Sao Paulo, Brasil",
-                "Lima, Peru",
-                "Montevideo, Uruguay",
-                "Panama City, Panama"
+                context.getString(R.string.city_mexico),
+                context.getString(R.string.city_habana),
+                context.getString(R.string.city_cancun),
+                context.getString(R.string.city_medellin),
+                context.getString(R.string.city_buenosaires),
+                context.getString(R.string.city_saopaulo),
+                context.getString(R.string.city_lima),
+                context.getString(R.string.city_montevideo),
+                context.getString(R.string.city_panama)
             )
         }
 
-        fun getProductByID(id: Int): Product?{
-            val list = MockDataProvider.getListOfProducts()
+        fun getProductByID(context: Context, id: Int): Product?{
+            val list = getListOfProducts(context)
             return list.find { it.id == id }
         }
 

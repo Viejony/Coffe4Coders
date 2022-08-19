@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,6 +30,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NavigationHost() {
     val navController = rememberNavController()
+    val context = LocalContext.current
+
     Coffe4CodersTheme() {
         Column {
             Surface(color = MaterialTheme.colors.background) {
@@ -39,13 +42,13 @@ fun NavigationHost() {
                     composable(route = "detail/{productID}") { backStackEntry ->
                         val productIDString = backStackEntry.arguments?.getString("productID") ?: "COL"
                         val productID = productIDString.toInt()
-                        val product = MockDataProvider.getProductByID(productID)
+                        val product = MockDataProvider.getProductByID(context, productID)
                         DetailsScreen(navController, product!!)
                     }
                     composable(route = "checkout/{productID}") { backStackEntry ->
                         val productIDString = backStackEntry.arguments?.getString("productID") ?: "COL"
                         val productID = productIDString.toInt()
-                        val product = MockDataProvider.getProductByID(productID)
+                        val product = MockDataProvider.getProductByID(context, productID)
                         CheckoutScreen(navController, product!!)
                     }
                 }

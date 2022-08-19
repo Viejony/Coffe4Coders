@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,10 +28,11 @@ import com.example.coffe4coders.utils.MockDataProvider
 @Composable
 fun CheckoutScreen(navController: NavController, product: Product) {
 
+    val context = LocalContext.current
     val successOrderMsg = stringResource(id = R.string.finished_order_msg)
     val errorRequiredFieldsMsg = stringResource(id = R.string.error_not_complete_fields_msg)
 
-    val cities = MockDataProvider.getListOfCities()
+    val cities = MockDataProvider.getListOfCities(context)
     var city by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -171,9 +173,11 @@ private fun checkInputFieldAndShowAlert(
 )
 @Composable
 fun CheckoutScreenPreview() {
+    val context = LocalContext.current
     val navController = rememberNavController()
     val productID = 0
-    val product = MockDataProvider.getProductByID(0)
+    val product = MockDataProvider.getProductByID(context, 0)
+
     Coffe4CodersTheme {
         if (product != null) {
             CheckoutScreen(navController, product = product)
@@ -190,9 +194,11 @@ fun CheckoutScreenPreview() {
 )
 @Composable
 fun CheckoutScreenDarkPreview() {
+    val context = LocalContext.current
     val navController = rememberNavController()
     val productID = 0
-    val product = MockDataProvider.getProductByID(0)
+    val product = MockDataProvider.getProductByID(context, 0)
+
     Coffe4CodersTheme {
         if (product != null) {
             CheckoutScreen(navController, product = product)

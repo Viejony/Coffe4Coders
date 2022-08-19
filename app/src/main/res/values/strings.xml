@@ -13,4 +13,35 @@
     <string name="error_not_complete_fields_msg">Check that all the required fields were filled</string>
     <string name="error_not_complete_fields_title">Error</string>
     <string name="finished_order_msg">Your order was created</string>
+
+    <string name="welcome">Welcome</string>
+    <string name="welcome_msg">Here you can find our product catalog of Coffe on sale</string>
+
+    <string name="continue_title">Continue</string>
+
+    <string name="co_coffee_name">Colombian Coffee</string>
+    <string name="br_coffee_name">Brazilian coffee</string>
+    <string name="ri_coffee_name">Costa Rican coffee</string>
+    <string name="ni_coffee_name">Nicaraguan Coffee</string>
+
+    <string name="co_coffee_summary">Coffee from the mountains of Colombia.</string>
+    <string name="br_coffee_summary">Brazilian coffee, which comes from the largest coffee country in the world.</string>
+    <string name="ri_coffee_summary">100% of our coffee is of the Arabica species, of the Caturra and Catuaí varieties.</string>
+    <string name="ni_coffee_summary">The best coffees come from Nueva Segovia, Madriz.</string>
+
+    <string name="co_coffee_desc">Our effort and joint work represents the dream of love for the mountains of our country.</string>
+    <string name="br_coffee_desc">Brazilian coffee corresponds to the Arabica and Robusta variety, which is why the sweet flavor predominates, similar to coffees from Africa.</string>
+    <string name="ri_coffee_desc">Costa Rican coffee is an entire culture with a tradition built over centuries of meticulous dedication to detail.</string>
+    <string name="ni_coffee_desc">95% of the coffee produced in Nicaragua is shade-grown, which guarantees supreme quality.</string>
+
+    <string name="city_mexico">Mexico City, Mexico</string>
+    <string name="city_habana">The Habana, Cuba</string>
+    <string name="city_cancun">Cancun, Mexico</string>
+    <string name="city_medellin">Medellin, Colombia</string>
+    <string name="city_buenosaires">Buenos Aires, Argentina</string>
+    <string name="city_saopaulo">Sao Paulo, Brasil</string>
+    <string name="city_lima">Lima, Peru</string>
+    <string name="city_montevideo">Montevideo, Uruguay</string>
+    <string name="city_panama">Panama City, Panama</string>
+
 </resources>
